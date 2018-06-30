@@ -54,8 +54,8 @@ class Modulos extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNivel()
+    public function getCurso()
     {
-        return $this->hasOne(Niveles::className(), ['id' => 'nivel_id'])->inverseOf('modulos');
+        return $this->hasOne(Cursos::className(), ['id' => 'curso_id'])->inverseOf('modulos');
     }
 }

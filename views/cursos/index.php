@@ -2,35 +2,25 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\CursosSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $cursos yii\data\ActiveDataProvider */
 
 $this->title = 'Cursos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cursos-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <h1>CursoLine</h1>
 
-    <p>
-        <?= Html::a('Create Cursos', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'nombre',
-            'descripcion',
-            'acronimo',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+    <h2>Cursos</h2>
+    
+    <?=
+        ListView::widget([
+            'dataProvider' => $cursos,
+            'itemView' => '_curso',
+            'summary' => '',
+        ]);
+    ?>
 </div>
