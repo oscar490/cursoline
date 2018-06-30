@@ -33,8 +33,33 @@ CREATE TABLE niveles
     ,  nombre   VARCHAR(255)  NOT NULL
     ,  curso_id BIGINT        NOT NULL REFERENCES cursos (id) ON DELETE
                               NO ACTION ON UPDATE CASCADE
+
+    ,  UNIQUE (nombre, curso_id)
 );
 
 
 INSERT INTO niveles (nombre, curso_id)
         VALUES ('1º DAW', 1), ('2º DAW', 1), ('1º SMR', 2), ('2º SMR', 2);
+
+
+
+
+-- Table modulos --
+
+DROP TABLE IF EXISTS modulos CASCADE;
+
+CREATE TABLE modulos
+(
+       id       BIGSERIAL    PRIMARY KEY
+    ,  nombre   VARCHAR(255) NOT NULL
+    ,  nivel_id BIGINT       NOT NULL REFERENCES niveles (id) ON DELETE
+                             NO ACTION ON UPDATE CASCADE
+    ,  imagen   VARCHAR(255)
+
+    ,  UNIQUE (nombre, nivel_id)
+
+);
+
+INSERT INTO modulos (nombre, nivel_id)
+        VALUES ('Programación', 1), ('Bases de datos', 1), ('Desarrollo Web Servidor', 2),
+                ('Desarrollo Web Cliente', 2), ('Aplicaciones Ofimáticas', 3);

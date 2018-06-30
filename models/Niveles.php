@@ -33,6 +33,11 @@ class Niveles extends \yii\db\ActiveRecord
             [['curso_id'], 'default', 'value' => null],
             [['curso_id'], 'integer'],
             [['nombre'], 'string', 'max' => 255],
+            [
+                ['nombre', 'curso_id'],
+                'unique',
+                'targetAttribute' => ['nombre', 'curso_id']
+            ], 
             [['curso_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cursos::className(), 'targetAttribute' => ['curso_id' => 'id']],
         ];
     }
