@@ -8,12 +8,14 @@ use yii\widgets\ListView;
 
 <h3><?= $model->nombre ?></h3>
 
-<?= 
-    ListView::widget([
-        'dataProvider' => new ActiveDataProvider([
-            'query' => $model->getModulos()
-        ]),
-        'itemView' => '_modulo',
-        'summary' => '',
-    ]);
-?>
+<div class="row">
+    <?= 
+        ListView::widget([
+            'dataProvider' => new ActiveDataProvider([
+                'query' => $model->getModulos()
+            ]),
+            'itemView' => '_modulo',
+            'summary' => '',
+        ]);
+    ?>
+</div>

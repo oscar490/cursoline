@@ -11,6 +11,7 @@ use Yii;
  * @property string $nombre
  * @property int $nivel_id
  * @property string $url_imagen
+ * @property string $descripcion
  *
  * @property Niveles $nivel
  */

@@ -29,16 +29,20 @@ DROP TABLE IF EXISTS modulos CASCADE;
 
 CREATE TABLE modulos
 (
-       id       BIGSERIAL    PRIMARY KEY
-    ,  nombre   VARCHAR(255) NOT NULL
-    ,  curso_id BIGINT       NOT NULL REFERENCES cursos (id) ON DELETE
-                             NO ACTION ON UPDATE CASCADE
-    ,  imagen   VARCHAR(255)
+       id          BIGSERIAL    PRIMARY KEY
+    ,  nombre      VARCHAR(255) NOT NULL
+    ,  descripcion VARCHAR(255)
+    ,  curso_id    BIGINT       NOT NULL REFERENCES cursos (id) ON DELETE
+                                NO ACTION ON UPDATE CASCADE
+    ,  imagen      VARCHAR(255)
 
     ,  UNIQUE (nombre, curso_id)
 
 );
 
-INSERT INTO modulos (nombre, curso_id)
-        VALUES ('Programación', 1), ('Bases de datos', 1), ('Desarrollo Web Servidor', 2),
-                ('Desarrollo Web Cliente', 2), ('Aplicaciones Ofimáticas', 3);
+INSERT INTO modulos (nombre, descripcion, curso_id)
+        VALUES ('Programación','Aprende a programar en JAVA',  1), 
+                ('Bases de datos', 'Todo sobre las Bases de datos relacionales', 1),
+                ('Desarrollo Web Servidor', 'Desarrollo Web en el lado del servidor', 2),
+                ('Desarrollo Web Cliente', 'Desarrollo Web en el lado del cliente', 2), 
+                ('Aplicaciones Ofimáticas', 'Utilización de aplicaciones ofimáticas', 3);
