@@ -8,6 +8,7 @@ use app\models\CursosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
  * CursosController implements the CRUD actions for Cursos model.
@@ -35,12 +36,13 @@ class CursosController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CursosSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        $cursos = new ActiveDataProvider([
+            'query' => Cursos::find(),
+        ]);
+        
+        
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'cursos' => $cursos,
         ]);
     }
 

@@ -43,4 +43,13 @@ class Cursos extends \yii\db\ActiveRecord
             'descripcion' => 'Descripcion',
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getModulos()
+    {
+        return $this->hasMany(Modulos::className(), ['curso_id'=>'id'])
+            ->inverseOf('curso');
+    }
 }

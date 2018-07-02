@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Cursos;
-use app\models\CursosSearch;
+use app\models\Modulos;
+use app\models\ModulosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\data\ActiveDataProvider;
 
 /**
- * CursosController implements the CRUD actions for Cursos model.
+ * ModelosController implements the CRUD actions for Modulos model.
  */
-class CursosController extends Controller
+class ModulosController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,22 +30,22 @@ class CursosController extends Controller
     }
 
     /**
-     * Lists all Cursos models.
+     * Lists all Modulos models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $cursos = new ActiveDataProvider([
-            'query' => Cursos::find(),
-        ]);
+        $searchModel = new ModulosSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'cursos' => $cursos,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Cursos model.
+     * Displays a single Modulos model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -59,13 +58,13 @@ class CursosController extends Controller
     }
 
     /**
-     * Creates a new Cursos model.
+     * Creates a new Modulos model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Cursos();
+        $model = new Modulos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -77,7 +76,7 @@ class CursosController extends Controller
     }
 
     /**
-     * Updates an existing Cursos model.
+     * Updates an existing Modulos model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -97,7 +96,7 @@ class CursosController extends Controller
     }
 
     /**
-     * Deletes an existing Cursos model.
+     * Deletes an existing Modulos model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -111,15 +110,15 @@ class CursosController extends Controller
     }
 
     /**
-     * Finds the Cursos model based on its primary key value.
+     * Finds the Modulos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Cursos the loaded model
+     * @return Modulos the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Cursos::findOne($id)) !== null) {
+        if (($model = Modulos::findOne($id)) !== null) {
             return $model;
         }
 
