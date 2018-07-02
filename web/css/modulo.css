@@ -1,0 +1,7 @@
+div.thumbnail {
+    border-radius: 10px;
+}
+
+div.thumbnail > img {
+    padding: 10px 10px 0px 10px;
+}

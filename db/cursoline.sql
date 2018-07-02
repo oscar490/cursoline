@@ -43,6 +43,7 @@ CREATE TABLE modulos
 INSERT INTO modulos (nombre, descripcion, curso_id)
         VALUES ('Programación','Aprende a programar en JAVA',  1), 
                 ('Bases de datos', 'Todo sobre las Bases de datos relacionales', 1),
+                ('Sistemas Informáticos', 'Gestionar y configurar sistemas informáticos', 1),
                 ('Desarrollo Web Servidor', 'Desarrollo Web en el lado del servidor', 2),
                 ('Desarrollo Web Cliente', 'Desarrollo Web en el lado del cliente', 2), 
                 ('Aplicaciones Ofimáticas', 'Utilización de aplicaciones ofimáticas', 3);
