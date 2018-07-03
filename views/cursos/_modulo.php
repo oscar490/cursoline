@@ -33,7 +33,14 @@ $this->registerCssFile('/css/modulo.css');
 
             <!-- Enlace de acceso -->
             <p>
-                <?= Html::a('Acceder', ['cursos/index'], ['class'=>'btn btn-primary']) ?>
+                <?= Html::a(
+                    'Acceder',
+                    ['cursos/index'],
+                    [
+                        'class'=>'btn btn-primary',
+                        'id' => 'enlace_modulo'
+                    ]
+                ) ?>
             </p>
         </div>
     </div>

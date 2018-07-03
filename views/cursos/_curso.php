@@ -7,27 +7,11 @@ use app\components\MyHelpers;
 
 $this->registerCssFile('/css/curso.css');
 
-$js = <<<JS
-    $(document).ready(function() {
-        $("button#button_flecha").on('click', function() {
-            let modulos = $(this).parent().next().next();
-            let icon = '';
-            
-            if (modulos.css('display') != 'none') {
-                icon = 'glyphicon glyphicon-chevron-right';
+$this->registerJsFile(
+    '/js/curso.js',
+    ['depends' => 'yii\web\JqueryAsset']
+);
 
-            } else {
-                icon = 'glyphicon glyphicon-chevron-down';
-            }
-
-            modulos.slideToggle();
-
-            $(this).find('span').attr('class', icon);
-        })
-    })
-JS;
-
-$this->registerJs($js);
 ?>
 
 <h3>
@@ -37,7 +21,7 @@ $this->registerJs($js);
         Html::button(
             MyHelpers::icon('glyphicon glyphicon-chevron-down'),
             [
-                'class'=>'btn btn-xs btn-primary',
+                'class'=>'btn btn-xs btn-default',
                 'id' => 'button_flecha'
             ]
         );
