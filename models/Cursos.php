@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "cursos".
@@ -30,6 +31,14 @@ class Cursos extends \yii\db\ActiveRecord
             [['nombre'], 'required'],
             [['nombre', 'descripcion'], 'string', 'max' => 255],
         ];
+    }
+
+    public function getEnlace()
+    {
+        return Html::a(
+            $this->nombre,
+            ['cursos/view', 'id' => $this->id]
+        );
     }
 
     /**

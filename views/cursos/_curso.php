@@ -1,8 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use yii\data\ActiveDataProvider;
-use yii\widgets\ListView;
 use app\components\MyHelpers;
 
 $this->registerCssFile('/css/curso.css');
@@ -14,8 +12,9 @@ $this->registerJsFile(
 
 ?>
 
+<!-- Curso -->
 <h3>
-    <?= $model->nombre ?> 
+    <?= $model->enlace ?> 
 
     <?=
         Html::button(
@@ -29,16 +28,10 @@ $this->registerJsFile(
 </h3>
 <br>
 
+<!-- Módulos del curso -->
 <div id="modulos">
-    <div class="row">
-        <?= 
-            ListView::widget([
-                'dataProvider' => new ActiveDataProvider([
-                    'query' => $model->getModulos()
-                ]),
-                'itemView' => '_modulo',
-                'summary' => '',
-            ]);
-        ?>
-    </div>
+    <?= $this->render('lista_modulos', [
+        'curso' => $model,
+    ]) ?>
 </div>
+

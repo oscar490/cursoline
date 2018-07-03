@@ -142,3 +142,7 @@ a.navbar-brand {
     background-color: #84caf3 !important;
     border-color: #84caf3 !important;
 }
+
+a {
+    text-decoration: none !important;
+}
