@@ -2,8 +2,6 @@ Options +FollowSymLinks
 IndexIgnore */*
 
 RewriteEngine on
-RewriteCond %{HTTPS} off
-RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
 
 # if a directory or a file exists, use it directly
 RewriteCond %{REQUEST_FILENAME} !-f
