@@ -11,9 +11,7 @@ $this->title = 'Cursos';
 // $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cursos-index">
-
-    <h1>CursoLine</h1>
-
+    
     <h2>Cursos</h2>
     
     <?=
