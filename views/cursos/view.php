@@ -11,9 +11,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 ?>
-<div class="cursos-view">
 
-    <h2><?= Html::encode($this->title) ?></h2>
+<div class="cursos-view">
+    <div class='row'>
+        <div class='col-md-5'>
+            
+            <!-- Lista de cursos -->
+            <select class="form-control">
+                <?php foreach ($cursos as $curso): 
+                    $seleccionado = ($curso->id == $model->id)
+                        ? 'selected' : '';
+                ?>
+                    <option value="<?= $curso->id ?>" <?= $seleccionado ?> ><?= $curso->nombre ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </div>
+    
     <br>
 
     <?= $this->render('lista_modulos', [

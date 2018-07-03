@@ -56,9 +56,12 @@ class CursosController extends Controller
         if (!ctype_digit($id)) {
             throw new NotFoundHttpException('Parámetro incorrecto');
         }
+
+        $cursos = Cursos::find()->all();
         
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'cursos' => $cursos,
         ]);
     }
 
