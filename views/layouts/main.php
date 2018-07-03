@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\components\MyHelpers;
 
 AppAsset::register($this);
 ?>
@@ -38,6 +39,12 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
+            [
+                'label' => MyHelpers::icon('glyphicon glyphicon-home') . 
+                    ' Inicio', 
+                'url'=>['/cursos/index'],
+                'encode' => false,
+            ],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (

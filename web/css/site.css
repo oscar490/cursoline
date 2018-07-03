@@ -117,10 +117,14 @@ a.desc:after {
 /* Mis Estilos */
 
 a.navbar-brand {
-    font-weight: bold;
+    font-weight: 1000;
     color: white !important;
     font-size: 25px;
     text-shadow: 1px 1px 1px black;
+}
+
+a.navbar-brand:hover {
+    transform: scale(1.1);
 }
 
 .navbar-inverse .navbar-nav > li > a, .pull-left {
@@ -128,9 +132,15 @@ a.navbar-brand {
     color: white !important;
 }
 
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > .active > a:hover {
+    background-color: white;
+    color: #84caf3 !important;
+}
+
 .navbar-inverse {
     background-color: #84caf3 !important;
-    border-color: #84caf3 !important;
+    border-color:#84caf3 !important;
 }
 
 .footer {
@@ -145,4 +155,22 @@ a.navbar-brand {
 
 a {
     text-decoration: none !important;
+}
+
+div.wrap {
+    background-color: #f1f1f1;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+    background-color: white;
+    color: #84caf3 !important;
+    border-bottom-color: white !important;
+}
+
+ul.breadcrumb {
+    background-color: white;
+}
+
+ul.breadcrumb li.active {
+    font-weight: bold;
 }

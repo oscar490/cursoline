@@ -7,7 +7,10 @@
 
 use yii\helpers\Html;
 
+$name = "Página no encontrada";
+
 $this->title = $name;
+
 ?>
 <div class="site-error">
 
@@ -18,10 +21,7 @@ $this->title = $name;
     </div>
 
     <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
+        Ha ocurrido un error a causa de la búsqueda que se ha realizado.
     </p>
 
 </div>

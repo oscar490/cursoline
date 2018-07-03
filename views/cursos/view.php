@@ -8,10 +8,12 @@ use yii\widgets\DetailView;
 
 $this->title = $model->nombre;
 $this->params['breadcrumbs'][] = $this->title;
+
+
 ?>
 <div class="cursos-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h2><?= Html::encode($this->title) ?></h2>
     <br>
 
     <?= $this->render('lista_modulos', [

@@ -12,7 +12,7 @@ $this->title = 'Cursos';
 ?>
 <div class="cursos-index">
     
-    <h2>Cursos</h2>
+    <h2><strong>Cursos</strong></h2>
     
     <?=
         ListView::widget([
