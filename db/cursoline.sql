@@ -15,6 +15,7 @@ CREATE TABLE usuarios
     ,  password  VARCHAR(255) NOT NULL
     ,  token_act VARCHAR(255)
     ,  token_rec VARCHAR(255)
+    ,  UNIQUE (email)
 );
 
 INSERT INTO usuarios (nombre, apellidos, email, password)
