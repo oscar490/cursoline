@@ -30,7 +30,14 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => 
+            Html::tag(
+                'p',
+                Html::img(
+                    '/images/logo-cursoline.png',
+                    ['alt' => 'CursoLine', 'class' => 'logotipo']
+                ) . Yii::$app->name
+                ),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -40,12 +47,12 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             [
-                'label' => MyHelpers::icon('glyphicon glyphicon-home') . 
-                    ' Inicio', 
+                'label' =>'<div>' . MyHelpers::icon('glyphicon glyphicon-home') . 
+                    ' ' . 'Inicio</div>', 
                 'url'=>['/cursos/index'],
                 'encode' => false,
             ],
-            ['label' => 'About', 'url' => ['/site/about']],
+            ['label' => '<div>About</div>', 'url' => ['/site/about'], 'encode'=>false],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]

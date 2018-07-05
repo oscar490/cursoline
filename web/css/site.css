@@ -120,11 +120,16 @@ a.navbar-brand {
     font-weight: 1000;
     color: white !important;
     font-size: 25px;
-    text-shadow: 1px 1px 1px black;
+    
 }
 
 a.navbar-brand:hover {
     transform: scale(1.1);
+    transition: transform 0.15s;
+}
+
+a.navbar-brand {
+    padding-top: 11px !important;
 }
 
 .navbar-inverse .navbar-nav > li > a, .pull-left {
@@ -132,10 +137,14 @@ a.navbar-brand:hover {
     color: white !important;
 }
 
-.navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > .active > a:hover {
     background-color: white;
-    color: #84caf3 !important;
+    color:  #84caf3 !important;
+}
+
+.navbar-inverse .navbar-nav > li > a > div:hover {
+    transform: scale(1.2);
+    transition: transform 0.15s;
 }
 
 .navbar-inverse {
@@ -173,4 +182,20 @@ ul.breadcrumb {
 
 ul.breadcrumb li.active {
     font-weight: bold;
+}
+
+.navbar-inverse .navbar-toggle:focus {
+    background-color: #84caf3 !important; 
+}
+
+
+.centrado {
+    display: flex;
+    justify-content: center;
+}
+
+.logotipo {
+    width: 38px;
+    height: 32px;
+    margin-right: 4px;
 }

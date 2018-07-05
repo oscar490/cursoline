@@ -7,7 +7,7 @@ use yii\widgets\ListView;
 /* @var $this yii\web\View */
 /* @var $cursos yii\data\ActiveDataProvider */
 
-$this->title = 'Cursos';
+$this->title = 'CursoLine';
 // $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cursos-index">
