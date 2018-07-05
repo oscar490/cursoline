@@ -6,6 +6,10 @@ use yii\helpers\Html;
 $this->registerCssFile('/css/modulo.css');
 
 $css = <<<CSS
+    .seleccionado {
+        transform: scale(1.1);
+        transition: transform 0.15s;
+    }
 
     div#acceso_modulo {
         display: none;
@@ -17,8 +21,11 @@ $this->registerCss($css);
 $js = <<<JS
     $("div.thumbnail").hover(
         function() {
+            $(this).addClass('seleccionado');
             $(this).find("div#acceso_modulo").slideDown();
         }, function() {
+
+            $(this).removeClass('seleccionado');
             $(this).find("div#acceso_modulo").slideUp();
 
         }

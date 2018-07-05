@@ -137,15 +137,13 @@ a.navbar-brand {
     color: white !important;
 }
 
-.navbar-inverse .navbar-nav > .active > a:hover {
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > li > a:hover
+ {
     background-color: white;
     color:  #84caf3 !important;
 }
 
-.navbar-inverse .navbar-nav > li > a > div:hover {
-    transform: scale(1.2);
-    transition: transform 0.15s;
-}
 
 .navbar-inverse {
     background-color: #84caf3 !important;
