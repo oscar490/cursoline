@@ -5,6 +5,35 @@ use yii\helpers\Html;
 
 $this->registerCssFile('/css/modulo.css');
 
+$css = <<<CSS
+    .seleccionado {
+        transform: scale(1.1);
+        transition: transform 0.15s;
+    }
+
+    div#acceso_modulo {
+        display: none;
+    }
+CSS;
+
+$this->registerCss($css);
+
+$js = <<<JS
+    $("div.thumbnail").hover(
+        function() {
+            $(this).addClass('seleccionado');
+            $(this).find("div#acceso_modulo").slideDown();
+        }, function() {
+
+            $(this).removeClass('seleccionado');
+            $(this).find("div#acceso_modulo").slideUp();
+
+        }
+    )
+JS;
+
+$this->registerJs($js);
+
 ?>
 
 <div class="col-sm-6 col-md-4">
@@ -32,16 +61,18 @@ $this->registerCssFile('/css/modulo.css');
             </p>
 
             <!-- Enlace de acceso -->
-            <p>
-                <?= Html::a(
-                    'Acceder',
-                    ['cursos/index'],
-                    [
-                        'class'=>'btn btn-primary',
-                        'id' => 'enlace_modulo'
-                    ]
-                ) ?>
-            </p>
+            <div id="acceso_modulo">
+                <p>
+                    <?= Html::a(
+                        'Acceder',
+                        ['cursos/index'],
+                        [
+                            'class'=>'btn btn-primary',
+                            'id' => 'enlace_modulo'
+                        ]
+                    ) ?>
+                </p>
+            </div>
         </div>
     </div>
 </div>
