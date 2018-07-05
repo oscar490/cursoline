@@ -1,37 +1,48 @@
 <?php
+/* Contenido del curso */
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Cursos */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Cursos', 'url' => ['index']];
+$this->title = $model->nombre;
 $this->params['breadcrumbs'][] = $this->title;
+
+$js = <<<JS
+    $("select.form-control").on('change', function() {
+        let url_redirect = $(this).val();
+        window.location = url_redirect;
+    })
+JS;
+
+$this->registerJs($js);
 ?>
+
 <div class="cursos-view">
+    <div class='row centrado'>
+        <div class='col-md-4'>
+            
+            <!-- Lista de cursos -->
+            <select class="form-control">
+                <?php foreach ($cursos as $curso): 
+                    $seleccionado = ($curso->id == $model->id)
+                        ? 'selected' : '';
 
-    <h1><?= Html::encode($this->title) ?></h1>
+                    $direccion = Url::to(['cursos/view', 'id' => $curso->id], true);
+                ?>
+                    <option value="<?= $direccion ?>" <?= $seleccionado ?> ><?= $curso->nombre ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </div>
+    
+    <br><br>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'nombre',
-            'descripcion',
-        ],
+    <?= $this->render('lista_modulos', [
+        'curso' => $model,
     ]) ?>
 
 </div>

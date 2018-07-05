@@ -24,11 +24,11 @@ $this->registerCssFile('/css/modulo.css');
         <div class="caption">
 
             <!-- Nombre del módulo -->
-            <h3> <?= $model->nombre ?> </h3>
+            <h3> <?= Html::encode($model->nombre) ?> </h3>
             
             <!-- Descripción del módulo -->
             <p>
-                <?= $model->descripcion ?>
+                <?= Html::encode($model->descripcion) ?>
             </p>
 
             <!-- Enlace de acceso -->
