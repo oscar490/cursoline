@@ -1,9 +1,4 @@
-
-
-<p>
-    <img src="web/images/logo-cursoline.png" syle="background-color: black" width="38px" height="32px" class="img-rounded">
-    <strong style="font-size: 30px; margin-left: 10px;">CursoLine</strong>
-</p>
+<h1>CursoLine</h1>
 
 Aplicación Web para la creación de cursos online. 
 
