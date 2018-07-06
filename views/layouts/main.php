@@ -12,6 +12,53 @@ use app\assets\AppAsset;
 use app\components\MyHelpers;
 
 AppAsset::register($this);
+
+//  Usuario invitado.
+if (Yii::$app->user->isGuest) {
+    $items_nav = [
+        [
+            'label' => MyHelpers::icon('glyphicon glyphicon-log-in')
+                    . '   Acceder',
+            'url' => ['/site/login'],
+            'encode' => false,
+        ]
+    ];
+
+//  Usuario registrado.
+} else {
+    $usuario_login = Yii::$app->user->identity;
+
+    $items_nav = [
+        [
+            'label' =>'<div>' . MyHelpers::icon('glyphicon glyphicon-home') . 
+                ' ' . 'Inicio</div>', 
+            'url'=>['/cursos/index'],
+            'encode' => false,
+        ],
+        [
+            'label' => $usuario_login->nombre . ' ' . $usuario_login->apellidos,
+            'items' => [
+                [
+                    'label' => MyHelpers::icon('glyphicon glyphicon-user')
+                        . ' Perfil',
+                    'url' => ['usuarios/view', 'id' => $usuario_login->id],
+                    'encode' => false,
+                ],
+                '<li class="divider"></li>',
+                [
+                    'label' => MyHelpers::icon('glyphicon glyphicon-log-out')
+                        . ' Cerrar sesión',
+                    'url' => ['site/logout'],
+                    'encode' => false,
+                    'linkOptions' => [
+                        'data-method' => 'post'
+                    ]
+                ]
+            ],
+        ],
+       
+    ];
+}
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -45,28 +92,7 @@ AppAsset::register($this);
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            [
-                'label' =>'<div>' . MyHelpers::icon('glyphicon glyphicon-home') . 
-                    ' ' . 'Inicio</div>', 
-                'url'=>['/cursos/index'],
-                'encode' => false,
-            ],
-            ['label' => '<div>About</div>', 'url' => ['/site/about'], 'encode'=>false],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->nombre . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
+        'items' => $items_nav,
     ]);
     NavBar::end();
     ?>
