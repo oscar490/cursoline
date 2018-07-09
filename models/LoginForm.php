@@ -28,6 +28,17 @@ class LoginForm extends Model
         return [
             // username and password are both required
             [['email', 'password'], 'required'],
+            //  email
+            [['email'], 'email'],
+
+            [
+                ['email'],
+                'exist',
+                'targetClass' => Usuarios::class,
+                'targetAttribute' =>  ['email' => 'email'],
+                'message' => 'No existe ningún usuario con esa dirección de correo',
+                
+            ],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
@@ -48,7 +59,7 @@ class LoginForm extends Model
             $user = $this->getUser();
             
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'Contraseña incorrecta.');
             }
         }
     }
@@ -61,6 +72,7 @@ class LoginForm extends Model
         return [
             'email' => 'Dirección de correo electrónico',
             'password' => 'Contraseña',
+            'rememberMe' => 'Recordarme',
         ];
     }
 

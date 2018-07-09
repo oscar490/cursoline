@@ -29,10 +29,14 @@ $this->registerCssFile('/css/login.css');
             <div id="form-login" class="panel panel-primary">
                 <div class="panel-heading">
                     <?php $form = ActiveForm::begin([
-                    
+                        'enableAjaxValidation' => true,
                     ]); ?>
 
-                        <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
+                        <?= $form->field(
+                            $model,
+                            'email',
+                            ['enableAjaxValidation' => true]
+                            )->textInput(['autofocus' => true]) ?>
 
                         <?= $form->field($model, 'password')->passwordInput() ?>
 

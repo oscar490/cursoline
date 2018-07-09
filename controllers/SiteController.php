@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\bootstrap\ActiveForm;
 
 class SiteController extends Controller
 {
@@ -76,6 +77,11 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
+
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
        
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->redirect(['usuarios/view', 'id' => \Yii::$app->user->id]);
