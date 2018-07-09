@@ -54,6 +54,17 @@ class LoginForm extends Model
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'email' => 'Dirección de correo electrónico',
+            'password' => 'Contraseña',
+        ];
+    }
+
+    /**
      * Logs in a user using the provided username and password.
      * @return bool whether the user is logged in successfully
      */
