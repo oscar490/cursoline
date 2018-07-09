@@ -67,8 +67,7 @@ $this->registerJs($js);
                         'Acceder',
                         ['cursos/index'],
                         [
-                            'class'=>'btn btn-primary',
-                            'id' => 'enlace_modulo'
+                            'class'=>'btn btn-primary enlace_personalizado',
                         ]
                     ) ?>
                 </p>

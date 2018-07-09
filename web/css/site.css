@@ -132,13 +132,30 @@ a.navbar-brand {
     padding-top: 11px !important;
 }
 
-.navbar-inverse .navbar-nav > li > a, .pull-left {
+.navbar-inverse .navbar-nav > li > a, .pull-left, button.logout {
     font-weight: bold;
     color: white !important;
 }
 
+.dropdown-menu > li > a,
+button.logout {
+    font-weight: bold;
+    color:  #84caf3 !important;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > .active > a,
+button.logout:hover {
+    font-weight: bold;
+    color:  white !important;
+    background-color:  #84caf3 !important;
+}
+
 .navbar-inverse .navbar-nav > .active > a:hover,
-.navbar-inverse .navbar-nav > li > a:hover
+.navbar-inverse .navbar-nav > li > a:hover,
+.dropdown-menu > li > a,
+.navbar-inverse .navbar-nav > .open > a:focus,
+.navbar-inverse .navbar-nav > .open > a
  {
     background-color: white;
     color:  #84caf3 !important;
@@ -158,6 +175,11 @@ a.navbar-brand {
 .enlace_personalizado {
     background-color: #84caf3 !important;
     border-color: #84caf3 !important;
+    font-weight: bold;
+}
+
+.enlace_personalizado:hover {
+    opacity: 0.8;
 }
 
 a {
@@ -182,14 +204,21 @@ ul.breadcrumb li.active {
     font-weight: bold;
 }
 
+ul.dropdown-menu {
+    border-radius: 7px !important;
+    box-shadow: 5px 3px 5px darkgrey !important;
+    margin-top: -10px !important;
+}
+
 .navbar-inverse .navbar-toggle:focus {
     background-color: #84caf3 !important; 
 }
 
 
+
 .centrado {
-    display: flex;
-    justify-content: center;
+    display: flex !important;
+    justify-content: center !important;
 }
 
 .logotipo {

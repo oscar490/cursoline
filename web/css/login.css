@@ -1,0 +1,42 @@
+#form-login {
+    border-color: #84caf3 !important;
+    border-width: 2px !important;
+}
+
+#titulo {
+    color: white;
+    text-shadow: 1px 2px 4px black;
+    font-weight: 1000;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    border-color: white;
+    border-width: 20px;
+}
+
+#form-login .panel-heading {
+    background-color: white !important;
+    border-color: #84caf3 !important;
+}
+
+div.site-login label.control-label {
+    color: white;
+    background-color: #84caf3 !important;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 4px;
+}
+
+.field-loginform-email {
+    margin-bottom: 30px !important;
+    margin-top: 15px !important;
+}
+
+div.site-login .form-control {
+    border-color: #84caf3 !important;
+}
+
+div.checkbox > label {
+    color: #84caf3 !important;
+    font-weight: bold;
+}

@@ -5,13 +5,3 @@ div.thumbnail {
 div.thumbnail > img {
     padding: 10px 10px 0px 10px;
 }
-
-#enlace_modulo {
-    background-color: #84caf3;
-    border-color: #84caf3;
-    font-weight: bold;
-}
-
-#enlace_modulo:hover {
-    opacity: 0.8;
-}
