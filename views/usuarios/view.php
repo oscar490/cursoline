@@ -9,34 +9,36 @@ use yii\widgets\DetailView;
 $this->title = $model->nombre . ' ' . $model->apellidos;
 $this->params['breadcrumbs'][] = ['label' => 'Usuarios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = 'Perfil';
+
+$this->registerCssFile('/css/perfil.css');
 ?>
 <div class="usuarios-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <p><?= Html::img($model->url_imagen) ?></pZ
+    <div class="row sombra_div">
+        <div class="col-md-1">
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+                <!-- Imagen de perfil -->
+                <?=
+                    Html::img(
+                        $model->url_imagen,
+                        [
+                            'alt' => 'imagen_perfil',
+                            'class' => 'img_rounded'
+                        ]
+                    )
+                ?>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'nombre',
-            'apellidos',
-            'email:email',
-            'password',
-            'token_act',
-            'token_rec',
-        ],
-    ]) ?>
+                
+        </div>
+
+        <div class="col-md-10">
+            <!-- Nombre del alumno. Título -->
+            <h1>
+                <?= 
+                    Html::encode($model->nombre . ' ' . $model->apellidos) 
+                ?>
+            </h1>
+        </div>
+    </div>
 
 </div>
