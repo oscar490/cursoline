@@ -22,7 +22,8 @@ CREATE TABLE usuarios
 );
 
 INSERT INTO usuarios (nombre, apellidos, email, password, url_imagen)
-    VALUES ('Óscar', 'Vega Herrera', 'oscarvegaherrera59@gmail.com', 'unodostrescuatro', default);
+    VALUES ('Óscar', 'Vega Herrera', 'oscarvegaherrera59@gmail.com', 'unodostrescuatro', default),
+            ('Manuel', 'Cuevas Rodríguez', 'manuel.cuevas@gmail.com', 'cuevas', default);
 
 
 -- Tabla cursos --
@@ -69,3 +70,23 @@ INSERT INTO modulos (nombre, descripcion, curso_id)
                 ('Desarrollo Web Servidor', 'Desarrollo Web en el lado del servidor', 2),
                 ('Desarrollo Web Cliente', 'Desarrollo Web en el lado del cliente', 2),
                 ('Aplicaciones Ofimáticas', 'Utilización de aplicaciones ofimáticas', 3);
+
+
+
+-- Tabla matriculaciones --
+
+DROP TABLE IF EXISTS matriculaciones CASCADE;
+
+CREATE TABLE matriculaciones
+(
+       id         BIGSERIAL PRIMARY KEY
+    ,  modulo_id  BIGINT    REFERENCES modulos (id) ON DELETE
+                            NO ACTION ON UPDATE CASCADE
+    ,  usuario_id BIGINT    REFERENCES usuarios (id) ON DELETE
+                            NO ACTION ON UPDATE CASCADE
+
+    ,  UNIQUE (modulo_id, usuario_id)
+);
+
+INSERT INTO matriculaciones (modulo_id, usuario_id)
+    VALUES (1, 1), (2, 1), (3, 1), (6, 2);

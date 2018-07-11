@@ -76,11 +76,13 @@ $formato = Yii::$app->formatter;
                     <?= ' (' . $formato->asRelativeTime($model->primer_acceso) . ') ' ?>
                 </div>
 
-                <div class="col-md-6">
-                    <p>Último acceso al sitio</p>
-                    <?= $formato->asDateTime($model->ultimo_acceso) ?>
-                    <?= ' (' . $formato->asRelativeTime($model->ultimo_acceso) . ') ' ?>
-                </div>
+                <?php if ($model->ultimo_acceso !== null): ?>
+                    <div class="col-md-6">
+                        <p>Último acceso al sitio</p>
+                        <?= $formato->asDateTime($model->ultimo_acceso) ?>
+                        <?= ' (' . $formato->asRelativeTime($model->ultimo_acceso) . ') ' ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
 
