@@ -19,3 +19,24 @@ div.usuarios-view > div.row > div.col-md-1 {
 div.usuarios-view > div.row > div.col-md-10 > h1 {
     margin-top: 5px !important;
 }
+
+.seleccion_perfil {
+    background-color: white;
+}
+
+#cuerpo_general {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.contenedor_simple {
+    padding-bottom: 20px;
+}
+
+.contenedor_simple p, .col-md-10 > h1 {
+    font-weight: bold;
+}
+
+#detalles_user {
+    margin-right: 10px;
+}

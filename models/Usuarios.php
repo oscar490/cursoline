@@ -15,7 +15,7 @@ namespace app\models;
  */
 class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
-   
+
     /**
      * {@inheritdoc}
      */
@@ -52,7 +52,7 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
         ];
     }
 
-    
+
     /**
      * {@inheritdoc}
      */
@@ -114,7 +114,7 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
      */
     public function validatePassword($password)
     {
-        
+
         return $this->password === $password;
     }
 }

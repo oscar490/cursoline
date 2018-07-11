@@ -8,14 +8,16 @@ DROP TABLE IF EXISTS usuarios CASCADE;
 
 CREATE TABLE usuarios
 (
-       id         BIGSERIAL    PRIMARY KEY
-    ,  nombre     VARCHAR(255) NOT NULL
-    ,  apellidos  VARCHAR(255) NOT NULL
-    ,  email      VARCHAR(255) NOT NULL
-    ,  password   VARCHAR(255) NOT NULL
-    ,  url_imagen VARCHAR(255) NOT NULL DEFAULT '/images/usuario.png'
-    ,  token_act  VARCHAR(255)
-    ,  token_rec  VARCHAR(255)
+       id            BIGSERIAL      PRIMARY KEY
+    ,  nombre        VARCHAR(255)   NOT NULL
+    ,  apellidos     VARCHAR(255)   NOT NULL
+    ,  email         VARCHAR(255)   NOT NULL
+    ,  password      VARCHAR(255)   NOT NULL
+    ,  url_imagen    VARCHAR(255)   NOT NULL DEFAULT '/images/usuario.png'
+    ,  primer_acceso TIMESTAMP(0)
+    ,  ultimo_acceso TIMESTAMP(0)
+    ,  token_act     VARCHAR(255)
+    ,  token_rec     VARCHAR(255)
     ,  UNIQUE (email)
 );
 
@@ -61,9 +63,9 @@ CREATE TABLE modulos
 );
 
 INSERT INTO modulos (nombre, descripcion, curso_id)
-        VALUES ('Programación','Aprende a programar en JAVA',  1), 
+        VALUES ('Programación','Aprende a programar en JAVA',  1),
                 ('Bases de datos', 'Todo sobre las Bases de datos relacionales', 1),
                 ('Sistemas Informáticos', 'Gestionar y configurar sistemas informáticos', 1),
                 ('Desarrollo Web Servidor', 'Desarrollo Web en el lado del servidor', 2),
-                ('Desarrollo Web Cliente', 'Desarrollo Web en el lado del cliente', 2), 
+                ('Desarrollo Web Cliente', 'Desarrollo Web en el lado del cliente', 2),
                 ('Aplicaciones Ofimáticas', 'Utilización de aplicaciones ofimáticas', 3);

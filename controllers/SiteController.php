@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use yii\bootstrap\ActiveForm;
+use yii\db\Expression;
 
 class SiteController extends Controller
 {
@@ -82,8 +83,18 @@ class SiteController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
         }
-       
+
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            $usuario = \Yii::$app->user->identity;
+
+            if ($usuario->primer_acceso === null) {
+                $usuario->primer_acceso = new Expression('current_timestamp');
+
+            } else {
+                $usuario->ultimo_acceso = new Expression('current_timestamp');
+            }
+
+            $usuario->save();
             return $this->redirect(['usuarios/view', 'id' => \Yii::$app->user->id]);
         }
 
