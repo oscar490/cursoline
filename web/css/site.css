@@ -214,7 +214,9 @@ ul.dropdown-menu {
     background-color: #84caf3 !important; 
 }
 
-
+.sombra_div {
+    box-shadow: 1px 1px 6px darkgrey !important;
+}
 
 .centrado {
     display: flex !important;
@@ -225,4 +227,14 @@ ul.dropdown-menu {
     width: 38px;
     height: 30px;
     margin-right: 4px;
+}
+
+a.dropdown-toggle > img {
+    width: 45px;
+    height: 45px;
+}
+
+a.dropdown-toggle {
+    padding-top: 3px !important;
+    padding-bottom: 2px !important;
 }

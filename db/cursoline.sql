@@ -8,18 +8,22 @@ DROP TABLE IF EXISTS usuarios CASCADE;
 
 CREATE TABLE usuarios
 (
-       id        BIGSERIAL    PRIMARY KEY
-    ,  nombre    VARCHAR(255) NOT NULL
-    ,  apellidos VARCHAR(255) NOT NULL
-    ,  email     VARCHAR(255) NOT NULL
-    ,  password  VARCHAR(255) NOT NULL
-    ,  token_act VARCHAR(255)
-    ,  token_rec VARCHAR(255)
+       id            BIGSERIAL      PRIMARY KEY
+    ,  nombre        VARCHAR(255)   NOT NULL
+    ,  apellidos     VARCHAR(255)   NOT NULL
+    ,  email         VARCHAR(255)   NOT NULL
+    ,  password      VARCHAR(255)   NOT NULL
+    ,  url_imagen    VARCHAR(255)   NOT NULL DEFAULT '/images/usuario.png'
+    ,  primer_acceso TIMESTAMP(0)
+    ,  ultimo_acceso TIMESTAMP(0)
+    ,  token_act     VARCHAR(255)
+    ,  token_rec     VARCHAR(255)
     ,  UNIQUE (email)
 );
 
-INSERT INTO usuarios (nombre, apellidos, email, password)
-    VALUES ('Óscar', 'Vega Herrera', 'oscarvegaherrera59@gmail.com', 'unodostrescuatro');
+INSERT INTO usuarios (nombre, apellidos, email, password, url_imagen)
+    VALUES ('Óscar', 'Vega Herrera', 'oscarvegaherrera59@gmail.com', 'unodostrescuatro', default),
+            ('Manuel', 'Cuevas Rodríguez', 'manuel.cuevas@gmail.com', 'cuevas', default);
 
 
 -- Tabla cursos --
@@ -60,9 +64,29 @@ CREATE TABLE modulos
 );
 
 INSERT INTO modulos (nombre, descripcion, curso_id)
-        VALUES ('Programación','Aprende a programar en JAVA',  1), 
+        VALUES ('Programación','Aprende a programar en JAVA',  1),
                 ('Bases de datos', 'Todo sobre las Bases de datos relacionales', 1),
                 ('Sistemas Informáticos', 'Gestionar y configurar sistemas informáticos', 1),
                 ('Desarrollo Web Servidor', 'Desarrollo Web en el lado del servidor', 2),
-                ('Desarrollo Web Cliente', 'Desarrollo Web en el lado del cliente', 2), 
+                ('Desarrollo Web Cliente', 'Desarrollo Web en el lado del cliente', 2),
                 ('Aplicaciones Ofimáticas', 'Utilización de aplicaciones ofimáticas', 3);
+
+
+
+-- Tabla matriculaciones --
+
+DROP TABLE IF EXISTS matriculaciones CASCADE;
+
+CREATE TABLE matriculaciones
+(
+       id         BIGSERIAL PRIMARY KEY
+    ,  modulo_id  BIGINT    REFERENCES modulos (id) ON DELETE
+                            NO ACTION ON UPDATE CASCADE
+    ,  usuario_id BIGINT    REFERENCES usuarios (id) ON DELETE
+                            NO ACTION ON UPDATE CASCADE
+
+    ,  UNIQUE (modulo_id, usuario_id)
+);
+
+INSERT INTO matriculaciones (modulo_id, usuario_id)
+    VALUES (1, 1), (2, 1), (3, 1), (6, 2);

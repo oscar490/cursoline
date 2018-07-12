@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "modulos".
@@ -38,6 +39,14 @@ class Modulos extends \yii\db\ActiveRecord
             [['nombre', 'nivel_id'], 'unique', 'targetAttribute' => ['nombre', 'nivel_id']],
             [['nivel_id'], 'exist', 'skipOnError' => true, 'targetClass' => Niveles::className(), 'targetAttribute' => ['nivel_id' => 'id']],
         ];
+    }
+
+    public function getEnlace()
+    {
+        return Html::a(
+            $this->nombre,
+            ['modulos/view', 'id' => $this->id]
+        );
     }
 
     /**

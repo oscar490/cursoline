@@ -36,7 +36,7 @@ if (Yii::$app->user->isGuest) {
             'encode' => false,
         ],
         [
-            'label' => $usuario_login->nombre . ' ' . $usuario_login->apellidos,
+            'label' => Html::img($usuario_login->url_imagen, ['alt' => 'imagen_user']),
             'items' => [
                 [
                     'label' => MyHelpers::icon('glyphicon glyphicon-user')
@@ -55,6 +55,7 @@ if (Yii::$app->user->isGuest) {
                     ]
                 ]
             ],
+            'encode' => false,
         ],
        
     ];
@@ -99,6 +100,7 @@ if (Yii::$app->user->isGuest) {
 
     <div class="container">
         <?= Breadcrumbs::widget([
+            'options' => ['class' => 'breadcrumb sombra_div'],
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>

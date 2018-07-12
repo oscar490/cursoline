@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Usuarios;
-use app\models\UsuariosSearch;
+use app\models\Matriculaciones;
+use app\models\MatriculacionesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
 /**
- * UsuariosController implements the CRUD actions for Usuarios model.
+ * MatriculacionesController implements the CRUD actions for Matriculaciones model.
  */
-class UsuariosController extends Controller
+class MatriculacionesController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -27,36 +26,16 @@ class UsuariosController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['view'],
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'actions' => ['view'],
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
-                            $usuario = Usuarios::findOne([
-                                Yii::$app->request->get('id')
-                            ]);
-
-                            return $usuario->primer_acceso !== null;
-                        }
-                    ]
-                ],
-
-            ]
         ];
     }
 
     /**
-     * Lists all Usuarios models.
+     * Lists all Matriculaciones models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new UsuariosSearch();
+        $searchModel = new MatriculacionesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -66,7 +45,7 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Displays a single Usuarios model.
+     * Displays a single Matriculaciones model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -79,13 +58,13 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Creates a new Usuarios model.
+     * Creates a new Matriculaciones model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Usuarios();
+        $model = new Matriculaciones();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -97,7 +76,7 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Updates an existing Usuarios model.
+     * Updates an existing Matriculaciones model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -117,7 +96,7 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Deletes an existing Usuarios model.
+     * Deletes an existing Matriculaciones model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -131,15 +110,15 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Finds the Usuarios model based on its primary key value.
+     * Finds the Matriculaciones model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Usuarios the loaded model
+     * @return Matriculaciones the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Usuarios::findOne($id)) !== null) {
+        if (($model = Matriculaciones::findOne($id)) !== null) {
             return $model;
         }
 
