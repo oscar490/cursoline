@@ -44,3 +44,30 @@ div.usuarios-view > div.row > div.col-md-10 > h1 {
 #detalles_curso, #opciones {
     margin-top: 20px;
 }
+
+
+/* Movil */
+@media (max-width: 768px) {
+    img[alt='imagen_perfil'] {
+        width: 50px;
+        height: 50px;
+    }
+
+    div.usuarios-view > div.row > div.col-md-1 {
+        margin-right: 10px;
+    }
+
+    div.usuarios-view > div.row > div.col-md-10 > h1 {
+        margin-top: 5px !important;
+        font-size: 20px;
+    }
+
+    #detalles_user, #detalles_curso {
+        margin-right: -15px;
+    }
+
+    #actividades_acceso {
+        margin-top: 20px;
+    }
+
+}
