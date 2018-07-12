@@ -44,6 +44,7 @@ $formato = Yii::$app->formatter;
     <!-- Cuerpo -->
     <div id="cuerpo_general" class="row sombra_div">
 
+        <!-- Detalles de usuario -->
         <div class="col-md-6">
             <div id="detalles_user" class="row sombra_div contenedor_simple">
                 <div class="col-md-12">
@@ -63,6 +64,7 @@ $formato = Yii::$app->formatter;
             </div>
         </div>
 
+        <!-- Actividades de acceso -->
         <div class="col-md-6">
             <div class="row sombra_div contenedor_simple">
                 <div class="col-md-12">
@@ -86,6 +88,28 @@ $formato = Yii::$app->formatter;
             </div>
         </div>
 
+        <!-- Detalles del curso -->
+        <div class="col-md-6">
+            <div id="detalles_curso" class="row sombra_div contenedor_simple">
+                <div class="col-md-12">
+                    <h3>Detalles del curso</h3>
+                    <hr>
+                </div>
+
+                <div class="col-md-6">
+                    <p>Módulos matriculados</p>
+
+
+                    <?php foreach ($model->modulos as $modulo): ?>
+                        <p>
+                            <?= $modulo->enlace ?>
+                        </p>
+                    <?php endforeach; ?>
+
+                </div>
+
+            </div>
+        </div>
     </div>
 
 </div>

@@ -117,4 +117,10 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
 
         return $this->password === $password;
     }
+
+    public function getModulos()
+    {
+        return $this->hasMany(Modulos::classNAme(), ['id' => 'modulo_id'])
+            ->viaTable('matriculaciones', ['usuario_id' => 'id']);
+    }
 }

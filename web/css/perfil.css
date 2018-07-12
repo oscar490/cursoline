@@ -37,6 +37,10 @@ div.usuarios-view > div.row > div.col-md-10 > h1 {
     font-weight: bold;
 }
 
-#detalles_user {
+#detalles_user, #detalles_curso {
     margin-right: 10px;
+}
+
+#detalles_curso, #opciones {
+    margin-top: 20px;
 }

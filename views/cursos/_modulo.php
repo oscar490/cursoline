@@ -14,6 +14,10 @@ $css = <<<CSS
     div#acceso_modulo {
         display: none;
     }
+
+    div.caption > h3 {
+        font-weight: bold;
+    }
 CSS;
 
 $this->registerCss($css);
@@ -37,7 +41,7 @@ $this->registerJs($js);
 ?>
 
 <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
+    <div class="thumbnail sombra_div">
 
         <!-- Imágen de módulo -->
         <?=
@@ -49,12 +53,12 @@ $this->registerJs($js);
                 ]
             )
         ?>
-        
+
         <div class="caption">
 
             <!-- Nombre del módulo -->
             <h3> <?= Html::encode($model->nombre) ?> </h3>
-            
+
             <!-- Descripción del módulo -->
             <p>
                 <?= Html::encode($model->descripcion) ?>
@@ -65,7 +69,7 @@ $this->registerJs($js);
                 <p>
                     <?= Html::a(
                         'Acceder',
-                        ['cursos/index'],
+                        ['modulos/view', 'id' => $model->id],
                         [
                             'class'=>'btn btn-primary enlace_personalizado',
                         ]
@@ -75,5 +79,3 @@ $this->registerJs($js);
         </div>
     </div>
 </div>
-
-
