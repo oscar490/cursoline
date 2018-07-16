@@ -16,7 +16,7 @@ div.usuarios-view > div.row > div.col-md-1 {
     margin-right: 30px;
 }
 
-div.usuarios-view > div.row > div.col-md-10 > h1 {
+div.usuarios-view > div.row > div.col-md-8 > h1 {
     margin-top: 5px !important;
 }
 
@@ -33,7 +33,7 @@ div.usuarios-view > div.row > div.col-md-10 > h1 {
     padding-bottom: 20px;
 }
 
-.contenedor_simple p, .col-md-10 > h1 {
+.contenedor_simple p, .col-md-8 > h1 {
     font-weight: bold;
 }
 
@@ -43,6 +43,24 @@ div.usuarios-view > div.row > div.col-md-10 > h1 {
 
 #detalles_perfil {
     margin-top: 20px;
+}
+
+div#update_user span {
+    font-size: 30px;
+    color: white;
+}
+
+div#update_user > a {
+    float: right;
+    background-color: #84caf3 !important;
+}
+
+div#update_user > a:hover {
+    opacity: 0.8;
+}
+
+div#update_user {
+    margin-left: 50px;
 }
 
 
@@ -57,7 +75,7 @@ div.usuarios-view > div.row > div.col-md-10 > h1 {
         margin-right: 10px;
     }
 
-    div.usuarios-view > div.row > div.col-md-10 > h1 {
+    div.usuarios-view > div.row > div.col-md-8 > h1 {
         margin-top: 5px !important;
         font-size: 20px;
     }

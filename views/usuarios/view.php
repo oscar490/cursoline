@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\components\MyHelpers;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Usuarios */
@@ -31,7 +32,7 @@ $formato = Yii::$app->formatter;
         </div>
 
         <!-- Datos -->
-        <div class="col-xs-8 col-md-10">
+        <div class="col-xs-8 col-md-8">
             <!-- Nombre del alumno. Título -->
             <h1>
                 <?=
@@ -42,10 +43,27 @@ $formato = Yii::$app->formatter;
             <!-- Descripcion -->
             <p>
                 <?=
-                    Html::encode($model->descripcion);
+                    $model->comprobarAtributo(
+                        $model->descripcion,
+                        'Añadir descripción'
+                    );
                 ?>
             </p>
+
         </div>
+
+        <!-- Enlace a modificación del perfil -->
+        <?php if (\Yii::$app->user->identity->id === $model->id): ?>
+            <div id="update_user" class='col-md-2'>
+                <?=
+                    Html::a(
+                        MyHelpers::icon('glyphicon glyphicon-cog'),
+                        ['usuarios/update', 'id' => $model->id],
+                        ['class' => 'btn btn-default']
+                    )
+                ?>
+            </div>
+        <?php endif; ?>
 
     </div>
     <br>
@@ -139,7 +157,7 @@ $formato = Yii::$app->formatter;
                 <!-- Ciudad -->
                 <div class='col-md-6'>
                     <p>Ciudad</p>
-                    <?= Html::encode($model->ciudad) ?>
+                    <?= $model->comprobarAtributo($model->ciudad, 'Añadir ciudad') ?>
                 </div>
             </div>
         </div>

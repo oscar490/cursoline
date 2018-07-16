@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use yii\helpers\Html;
+
 /**
  * This is the model class for table "usuarios".
  *
@@ -34,6 +36,7 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
             [['nombre', 'apellidos', 'email', 'password'], 'required'],
             [['nombre', 'apellidos', 'email', 'password', 'ciudad', 'pais', 'descripcion'], 'string', 'max' => 255],
             [['email'], 'unique'],
+            [['pais', 'ciudad', 'descripcion'], 'default', 'value' => null]
         ];
     }
 
@@ -81,6 +84,38 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
         $usuario = Usuarios::findOne(['email' => $email]);
 
         return $usuario;
+    }
+
+
+    /**
+     * Comprueba si el atributo es diferente a null. En caso de si,
+     * devuelve dicho atributo para mostrarlo. En caso de que no, devuelve
+     * un enlace para redireccionar a la página de modificación de perfil
+     * de usuario.
+     * @param string $atributo      Atributo a comprobar.
+     * @param string $nombre_enlace Nombre del enlace a mostrar en caso
+     *                              de que el atributo este a null.
+     * @return mixed El atributo si es diferente a null o el enlace si el
+     *               el atributo es null.
+     */
+    public function comprobarAtributo($atributo, $nombre_enlace)
+    {
+        if ($atributo === null) {
+            return Html::a($nombre_enlace, ['usuarios/update', 'id'=>$this->id]);
+        }
+
+        return Html::encode($atributo);
+    }
+
+    /**
+     * Devuelve y crea un enlace a la página de modificación
+     * del perfil de usuario.
+     * @param  string $nombre Nombre del enlace
+     * @return mixed         Enlace creado.
+     */
+    public function createEnlaceUpdate($nombre)
+    {
+        return Html::a($nombre, ['usuarios/update', 'id' => $this->id]);
     }
 
     /**
