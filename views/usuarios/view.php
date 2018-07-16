@@ -30,6 +30,7 @@ $formato = Yii::$app->formatter;
             ?>
         </div>
 
+        <!-- Datos -->
         <div class="col-xs-8 col-md-10">
             <!-- Nombre del alumno. Título -->
             <h1>
@@ -37,7 +38,15 @@ $formato = Yii::$app->formatter;
                     Html::encode($model->nombre . ' ' . $model->apellidos)
                 ?>
             </h1>
+
+            <!-- Descripcion -->
+            <p>
+                <?=
+                    Html::encode($model->descripcion);
+                ?>
+            </p>
         </div>
+
     </div>
     <br>
 
@@ -52,11 +61,13 @@ $formato = Yii::$app->formatter;
                     <hr>
                 </div>
 
+                <!-- Nombre y apellidos -->
                 <div class="col-xs-12 col-md-6">
                     <p>Nombre y apellidos</p>
                     <?= $model->nombre . ' ' . $model->apellidos ?>
                 </div>
 
+                <!-- Dirección de correo -->
                 <div class="col-md-6">
                     <p>Dirección de correo</p>
                     <?= $model->email ?>
@@ -108,6 +119,28 @@ $formato = Yii::$app->formatter;
 
                 </div>
 
+            </div>
+        </div>
+
+        <!-- Detalles de perfil -->
+        <div class="col-md-6">
+            <div id="detalles_perfil" class="row sombra_div contenedor_simple">
+                <div class='col-md-12'>
+                    <h3>Detalles de perfil</h3>
+                    <hr>
+                </div>
+
+                <!-- País -->
+                <div class='col-md-6'>
+                    <p>País</p>
+                    <?= Html::encode($model->pais) ?>
+                </div>
+
+                <!-- Ciudad -->
+                <div class='col-md-6'>
+                    <p>Ciudad</p>
+                    <?= Html::encode($model->ciudad) ?>
+                </div>
             </div>
         </div>
     </div>

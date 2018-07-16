@@ -10,8 +10,9 @@ namespace app\models;
  * @property string $apellidos
  * @property string $email
  * @property string $password
- * @property string $token_act
- * @property string $token_rec
+ * @property string $ciudad
+ * @property string $pais
+ * @property string $descripcion
  */
 class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
@@ -31,7 +32,7 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     {
         return [
             [['nombre', 'apellidos', 'email', 'password'], 'required'],
-            [['nombre', 'apellidos', 'email', 'password', 'token_act', 'token_rec'], 'string', 'max' => 255],
+            [['nombre', 'apellidos', 'email', 'password', 'ciudad', 'pais', 'descripcion'], 'string', 'max' => 255],
             [['email'], 'unique'],
         ];
     }

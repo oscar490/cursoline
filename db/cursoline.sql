@@ -16,14 +16,15 @@ CREATE TABLE usuarios
     ,  url_imagen    VARCHAR(255)   NOT NULL DEFAULT '/images/usuario.png'
     ,  primer_acceso TIMESTAMP(0)
     ,  ultimo_acceso TIMESTAMP(0)
-    ,  token_act     VARCHAR(255)
-    ,  token_rec     VARCHAR(255)
+    ,  ciudad        VARCHAR(255)
+    ,  pais          VARCHAR(255)   NOT NULL DEFAULT 'España'
+    ,  descripcion   VARCHAR(255)
     ,  UNIQUE (email)
 );
 
-INSERT INTO usuarios (nombre, apellidos, email, password, url_imagen)
-    VALUES ('Óscar', 'Vega Herrera', 'oscarvegaherrera59@gmail.com', 'unodostrescuatro', default),
-            ('Manuel', 'Cuevas Rodríguez', 'manuel.cuevas@gmail.com', 'cuevas', default);
+INSERT INTO usuarios (nombre, apellidos, email, password, url_imagen, ciudad, pais, descripcion)
+    VALUES ('Óscar', 'Vega Herrera', 'oscarvegaherrera59@gmail.com', 'unodostrescuatro', default, null, default, null),
+            ('Manuel', 'Cuevas Rodríguez', 'manuel.cuevas@gmail.com', 'cuevas', default, 'Sanlucar de Bda', default, 'Hola me gusta la programación' );
 
 
 -- Tabla cursos --
