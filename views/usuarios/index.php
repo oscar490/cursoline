@@ -30,6 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'apellidos',
             'email:email',
             'password',
+            'ciudad',
+            'pais',
             //'token_act',
             //'token_rec',
 

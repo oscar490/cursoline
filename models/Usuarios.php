@@ -65,6 +65,10 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
         return static::findOne($id);
     }
 
+    public function formName() {
+        return '';
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -101,7 +105,22 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     public function comprobarAtributo($atributo, $nombre_enlace)
     {
         if ($atributo === null) {
-            return Html::a($nombre_enlace, ['usuarios/update', 'id'=>$this->id]);
+            $id_login = \Yii::$app->user->identity->id;
+
+            if ((int) \Yii::$app->request->get('id') !== $id_login) {
+                return 'Sin especificar';
+
+            } else {
+                return Html::a(
+                    $nombre_enlace,
+                    '#modal_update_user',
+                    [
+                        'data-target' => '#modal_update_user',
+                        'data-toggle' => 'modal'
+                    ]
+                );
+            }
+
         }
 
         return Html::encode($atributo);

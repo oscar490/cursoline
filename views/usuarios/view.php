@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use app\components\MyHelpers;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Usuarios */
@@ -13,7 +14,19 @@ $this->params['breadcrumbs'][] = 'Perfil';
 $this->registerCssFile('/css/perfil.css');
 
 $formato = Yii::$app->formatter;
+
+Modal::begin([
+    'header' => '<h4><strong>Modificación</strong></h4>',
+    'toggleButton' => false,
+    'id' => 'modal_update_user',
+]);
+    echo $this->render('update', [
+        'model' => $model
+    ]);
+
+Modal::end();
 ?>
+
 <div class="usuarios-view">
 
     <!-- Cabecera -->
@@ -41,7 +54,7 @@ $formato = Yii::$app->formatter;
             </h1>
 
             <!-- Descripcion -->
-            <p>
+            <p id="descripcion">
                 <?=
                     $model->comprobarAtributo(
                         $model->descripcion,
@@ -58,8 +71,12 @@ $formato = Yii::$app->formatter;
                 <?=
                     Html::a(
                         MyHelpers::icon('glyphicon glyphicon-cog'),
-                        ['usuarios/update', 'id' => $model->id],
-                        ['class' => 'btn btn-default']
+                        '#modal_update_user',
+                        [
+                            'class' => 'btn btn-default',
+                            'data-target' => '#modal_update_user',
+                            'data-toggle' => 'modal'
+                        ]
                     )
                 ?>
             </div>
@@ -151,13 +168,17 @@ $formato = Yii::$app->formatter;
                 <!-- País -->
                 <div class='col-md-6'>
                     <p>País</p>
-                    <?= Html::encode($model->pais) ?>
+                    <div id="pais">
+                        <?= $model->comprobarAtributo($model->pais, 'Añadir pais') ?>
+                    </div>
                 </div>
 
                 <!-- Ciudad -->
                 <div class='col-md-6'>
                     <p>Ciudad</p>
-                    <?= $model->comprobarAtributo($model->ciudad, 'Añadir ciudad') ?>
+                    <div id="ciudad">
+                        <?= $model->comprobarAtributo($model->ciudad, 'Añadir ciudad') ?>
+                    </div>
                 </div>
             </div>
         </div>

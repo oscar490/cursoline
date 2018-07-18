@@ -19,7 +19,7 @@ class UsuariosSearch extends Usuarios
     {
         return [
             [['id'], 'integer'],
-            [['nombre', 'apellidos', 'email', 'password', 'token_act', 'token_rec'], 'safe'],
+            [['nombre', 'apellidos', 'email', 'password', 'ciudad', 'pais'], 'safe'],
         ];
     }
 
@@ -66,8 +66,8 @@ class UsuariosSearch extends Usuarios
             ->andFilterWhere(['ilike', 'apellidos', $this->apellidos])
             ->andFilterWhere(['ilike', 'email', $this->email])
             ->andFilterWhere(['ilike', 'password', $this->password])
-            ->andFilterWhere(['ilike', 'token_act', $this->token_act])
-            ->andFilterWhere(['ilike', 'token_rec', $this->token_rec]);
+            ->andFilterWhere(['ilike', 'ciudad', $this->ciudad])
+            ->andFilterWhere(['ilike', 'pais', $this->pais]);
 
         return $dataProvider;
     }

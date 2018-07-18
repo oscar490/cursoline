@@ -17,7 +17,7 @@ CREATE TABLE usuarios
     ,  primer_acceso TIMESTAMP(0)
     ,  ultimo_acceso TIMESTAMP(0)
     ,  ciudad        VARCHAR(255)
-    ,  pais          VARCHAR(255)   NOT NULL DEFAULT 'España'
+    ,  pais          VARCHAR(255)   
     ,  descripcion   VARCHAR(255)
     ,  UNIQUE (email)
 );
