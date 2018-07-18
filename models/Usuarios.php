@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use yii\helpers\Html;
+
 /**
  * This is the model class for table "usuarios".
  *
@@ -10,8 +12,9 @@ namespace app\models;
  * @property string $apellidos
  * @property string $email
  * @property string $password
- * @property string $token_act
- * @property string $token_rec
+ * @property string $ciudad
+ * @property string $pais
+ * @property string $descripcion
  */
 class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
@@ -31,8 +34,9 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     {
         return [
             [['nombre', 'apellidos', 'email', 'password'], 'required'],
-            [['nombre', 'apellidos', 'email', 'password', 'token_act', 'token_rec'], 'string', 'max' => 255],
+            [['nombre', 'apellidos', 'email', 'password', 'ciudad', 'pais', 'descripcion'], 'string', 'max' => 255],
             [['email'], 'unique'],
+            [['pais', 'ciudad', 'descripcion'], 'default', 'value' => null]
         ];
     }
 
@@ -61,6 +65,10 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
         return static::findOne($id);
     }
 
+    public function formName() {
+        return '';
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -80,6 +88,53 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
         $usuario = Usuarios::findOne(['email' => $email]);
 
         return $usuario;
+    }
+
+
+    /**
+     * Comprueba si el atributo es diferente a null. En caso de si,
+     * devuelve dicho atributo para mostrarlo. En caso de que no, devuelve
+     * un enlace para redireccionar a la página de modificación de perfil
+     * de usuario.
+     * @param string $atributo      Atributo a comprobar.
+     * @param string $nombre_enlace Nombre del enlace a mostrar en caso
+     *                              de que el atributo este a null.
+     * @return mixed El atributo si es diferente a null o el enlace si el
+     *               el atributo es null.
+     */
+    public function comprobarAtributo($atributo, $nombre_enlace)
+    {
+        if ($atributo === null) {
+            $id_login = \Yii::$app->user->identity->id;
+
+            if ((int) \Yii::$app->request->get('id') !== $id_login) {
+                return 'Sin especificar';
+
+            } else {
+                return Html::a(
+                    $nombre_enlace,
+                    '#modal_update_user',
+                    [
+                        'data-target' => '#modal_update_user',
+                        'data-toggle' => 'modal'
+                    ]
+                );
+            }
+
+        }
+
+        return Html::encode($atributo);
+    }
+
+    /**
+     * Devuelve y crea un enlace a la página de modificación
+     * del perfil de usuario.
+     * @param  string $nombre Nombre del enlace
+     * @return mixed         Enlace creado.
+     */
+    public function createEnlaceUpdate($nombre)
+    {
+        return Html::a($nombre, ['usuarios/update', 'id' => $this->id]);
     }
 
     /**

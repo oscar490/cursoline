@@ -16,7 +16,7 @@ div.usuarios-view > div.row > div.col-md-1 {
     margin-right: 30px;
 }
 
-div.usuarios-view > div.row > div.col-md-10 > h1 {
+div.usuarios-view > div.row > div.col-md-8 > h1 {
     margin-top: 5px !important;
 }
 
@@ -33,7 +33,7 @@ div.usuarios-view > div.row > div.col-md-10 > h1 {
     padding-bottom: 20px;
 }
 
-.contenedor_simple p, .col-md-10 > h1 {
+.contenedor_simple p, .col-md-8 > h1 {
     font-weight: bold;
 }
 
@@ -41,6 +41,67 @@ div.usuarios-view > div.row > div.col-md-10 > h1 {
     margin-right: 10px;
 }
 
-#detalles_curso, #opciones {
+#detalles_perfil, #detalles_curso {
     margin-top: 20px;
+}
+
+div#update_user span {
+    font-size: 30px;
+    color: white;
+}
+
+div#update_user > a {
+    float: right;
+    background-color: #84caf3 !important;
+}
+
+div#update_user > a:hover {
+    opacity: 0.8;
+}
+
+div#update_user {
+    margin-left: 50px;
+}
+
+div.modal-content {
+    border-radius: 10px;
+}
+
+div.modal-content > div.modal-header {
+    background-color: #84caf3 !important;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+div.modal-content > div.modal-body {
+    padding-left: 30px;
+}
+
+/* Movil */
+@media (max-width: 768px) {
+    img[alt='imagen_perfil'] {
+        width: 50px;
+        height: 50px;
+    }
+
+    div.usuarios-view > div.row > div.col-md-1 {
+        margin-right: 10px;
+    }
+
+    div.usuarios-view > div.row > div.col-md-8 > h1 {
+        margin-top: 5px !important;
+        font-size: 20px;
+    }
+
+    #detalles_user, #detalles_curso {
+        margin-right: -15px;
+    }
+
+    #actividades_acceso {
+        margin-top: 20px;
+    }
+
 }
