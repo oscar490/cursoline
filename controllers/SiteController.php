@@ -95,7 +95,7 @@ class SiteController extends Controller
             }
 
             $usuario->save();
-            return $this->redirect(['usuarios/view', 'id' => \Yii::$app->user->id]);
+            return $this->redirect(['usuarios/view', 'id' => $usuario->id]);
         }
 
         $model->password = '';
