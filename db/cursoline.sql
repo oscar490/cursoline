@@ -17,7 +17,7 @@ CREATE TABLE usuarios
     ,  primer_acceso TIMESTAMP(0)
     ,  ultimo_acceso TIMESTAMP(0)
     ,  ciudad        VARCHAR(255)
-    ,  pais          VARCHAR(255)   
+    ,  pais          VARCHAR(255)
     ,  descripcion   VARCHAR(255)
     ,  UNIQUE (email)
 );
@@ -56,6 +56,7 @@ CREATE TABLE modulos
        id          BIGSERIAL    PRIMARY KEY
     ,  nombre      VARCHAR(255) NOT NULL
     ,  descripcion VARCHAR(255)
+    ,  clave       VARCHAR(255)
     ,  curso_id    BIGINT       NOT NULL REFERENCES cursos (id) ON DELETE
                                 NO ACTION ON UPDATE CASCADE
     ,  imagen      VARCHAR(255)
@@ -64,13 +65,13 @@ CREATE TABLE modulos
 
 );
 
-INSERT INTO modulos (nombre, descripcion, curso_id)
-        VALUES ('Programación','Aprende a programar en JAVA',  1),
-                ('Bases de datos', 'Todo sobre las Bases de datos relacionales', 1),
-                ('Sistemas Informáticos', 'Gestionar y configurar sistemas informáticos', 1),
-                ('Desarrollo Web Servidor', 'Desarrollo Web en el lado del servidor', 2),
-                ('Desarrollo Web Cliente', 'Desarrollo Web en el lado del cliente', 2),
-                ('Aplicaciones Ofimáticas', 'Utilización de aplicaciones ofimáticas', 3);
+INSERT INTO modulos (nombre, descripcion, clave, curso_id)
+        VALUES ('Programación','Aprende a programar en JAVA','pro2018', 1),
+                ('Bases de datos', 'Todo sobre las Bases de datos relacionales','badat2018' ,  1),
+                ('Sistemas Informáticos', 'Gestionar y configurar sistemas informáticos','sinf2018' ,1),
+                ('Desarrollo Web Servidor', 'Desarrollo Web en el lado del servidor','dwes2018' ,2),
+                ('Desarrollo Web Cliente', 'Desarrollo Web en el lado del cliente','dwec2018' ,2),
+                ('Aplicaciones Ofimáticas', 'Utilización de aplicaciones ofimáticas','aplof2018' ,3);
 
 
 

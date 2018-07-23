@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\Html;
+use app\models\Matriculas;
 
 /**
  * This is the model class for table "modulos".
@@ -32,7 +33,7 @@ class Modulos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre', 'nivel_id'], 'required'],
+            [['nombre', 'nivel_id', 'clave'], 'required'],
             [['nivel_id'], 'default', 'value' => null],
             [['nivel_id'], 'integer'],
             [['nombre'], 'string', 'max' => 255],

@@ -90,6 +90,17 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
         return $usuario;
     }
 
+    public function getEstaMatriculado($id_modulo)
+    {
+        $matricula = Matriculaciones::find()
+            ->where([
+                'modulo_id' => $id_modulo,
+                'usuario_id' => $this->id
+            ])->one();
+
+        return $matricula !== null;
+    }
+
 
     /**
      * Comprueba si el atributo es diferente a null. En caso de si,

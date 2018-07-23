@@ -8,6 +8,8 @@ use app\models\ModulosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use app\models\Matriculaciones;
 
 /**
  * ModelosController implements the CRUD actions for Modulos model.
@@ -26,6 +28,22 @@ class ModulosController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['view'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['view'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+
+                            $usuario_logueado = Yii::$app->user->identity;
+                            return $usuario_logueado->getEstaMatriculado(Yii::$app->request->get('id'));
+                        }
+                    ],
+                ],
+            ]
         ];
     }
 

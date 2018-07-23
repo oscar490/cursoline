@@ -37,6 +37,7 @@ $js = <<<JS
 JS;
 
 $this->registerJs($js);
+$usuario_logueado = \Yii::$app->user->identity;
 
 ?>
 
@@ -66,15 +67,17 @@ $this->registerJs($js);
 
             <!-- Enlace de acceso -->
             <div id="acceso_modulo">
-                <p>
-                    <?= Html::a(
-                        'Acceder',
-                        ['modulos/view', 'id' => $model->id],
-                        [
-                            'class'=>'btn btn-primary enlace_personalizado',
-                        ]
-                    ) ?>
-                </p>
+                <?php //if ($usuario_logueado->getEstaMatriculado($model->id)): ?>
+                    <p>
+                        <?= Html::a(
+                            'Acceder',
+                            ['modulos/view', 'id' => $model->id],
+                            [
+                                'class'=>'btn btn-primary enlace_personalizado',
+                            ]
+                        ) ?>
+                    </p>
+                <?php //endif; ?>
             </div>
         </div>
     </div>
