@@ -109,9 +109,10 @@ class UsuariosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
+            $atributos_cambiados = $model->dirtyAttributes;
             $model->save();
             Yii::$app->response->format = Response::FORMAT_JSON;
-            return $model->attributes;
+            return $atributos_cambiados;
         }
 
         return $this->render('update', [

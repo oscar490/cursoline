@@ -1,5 +1,5 @@
 <?php
-
+/* Vista de perfil de usuario */
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use app\components\MyHelpers;
@@ -54,14 +54,14 @@ Modal::end();
             </h1>
 
             <!-- Descripcion -->
-            <p id="descripcion">
+            <div id="descripcion">
                 <?=
                     $model->comprobarAtributo(
                         $model->descripcion,
                         'Añadir descripción'
                     );
                 ?>
-            </p>
+            </div>
 
         </div>
 

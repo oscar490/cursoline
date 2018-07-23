@@ -9,6 +9,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 $url_update = Url::to(['usuarios/update', 'id' => $model->id]);
 
+/** JavaScript **/
 $js = <<<JS
     var formulario = $('form#update_user');
     var submit = formulario.find("button[type='submit']");
@@ -22,24 +23,33 @@ $js = <<<JS
             data: formulario.serialize(),
             success: function (data) {
                 $("#modal_update_user").modal('hide');
-                let ciudad = data.ciudad;
-                let pais = data.pais;
-                console.log(data.pais);
-                let descripcion = data.descripcion;
 
-                $("p#descripcion").text(descripcion);
-                $("div#pais").text(pais);
-                $("div#ciudad").text(ciudad);
+                for (let x in data) {
+                    let atributo = x;
+                    let valor = data[atributo];
+
+                    if (valor == "") {
+                        let enlace = $("<a></a>")
+                        .attr('href', "#modal_update_user")
+                        .attr('data-target', '#modal_update_user')
+                        .attr('data-toggle', 'modal')
+                        .text("Añadir " + atributo);
+
+                        $("div#" + atributo).html(enlace);
+                        continue;
+                    }
+
+                    $("div#" + atributo).text(valor);
+                }
             }
-
         });
-
     })
 JS;
 
 $this->registerJs($js);
 ?>
 
+<!-- Formulario de datos del usuario -->
 <div class="usuarios-form">
 
     <?php $form = ActiveForm::begin(['id' => 'update_user']); ?>
