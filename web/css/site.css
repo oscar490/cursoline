@@ -120,7 +120,7 @@ a.navbar-brand {
     font-weight: 1000;
     color: white !important;
     font-size: 25px;
-    
+
 }
 
 a.navbar-brand:hover {
@@ -211,7 +211,7 @@ ul.dropdown-menu {
 }
 
 .navbar-inverse .navbar-toggle:focus {
-    background-color: #84caf3 !important; 
+    background-color: #84caf3 !important;
 }
 
 .sombra_div {
@@ -237,4 +237,17 @@ a.dropdown-toggle > img {
 a.dropdown-toggle {
     padding-top: 3px !important;
     padding-bottom: 2px !important;
+}
+
+div.modal-content {
+    border-radius: 10px;
+}
+
+div.modal-content > div.modal-header {
+    background-color: #84caf3 !important;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

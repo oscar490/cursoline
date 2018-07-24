@@ -2,6 +2,8 @@
 /* Vista de un módulo del curso */
 
 use yii\helpers\Html;
+use yii\bootstrap\Modal;
+use app\models\MatriculacionForm;
 
 $this->registerCssFile('/css/modulo.css');
 
@@ -22,6 +24,7 @@ CSS;
 
 $this->registerCss($css);
 
+//  JavaSript.
 $js = <<<JS
     $("div.thumbnail").hover(
         function() {
@@ -38,6 +41,33 @@ JS;
 
 $this->registerJs($js);
 $usuario_logueado = \Yii::$app->user->identity;
+
+//  Modal para automatriculación.
+Modal::begin([
+    'header' => '<h4><strong>Automatriculación</strong></h4>',
+    'toggleButton' => false,
+    'id' => 'modal_matriculacion',
+    'size' => Modal::SIZE_SMALL,
+]);
+    echo $this->render('/modulos/matriculacionForm', [
+        'model' => new MatriculacionForm(),
+    ]);
+
+Modal::end();
+
+$options = [
+    'class'=>'btn btn-primary enlace_personalizado',
+];
+
+if ($usuario_logueado->getEstaMatriculado($model->id)) {
+    $href = ['modulos/view', 'id' => $model->id];
+
+} else {
+    $href = '#modal_matriculacion';
+    $options['data-target'] = '#modal_matriculacion';
+    $options['data-toggle'] = 'modal';
+
+}
 
 ?>
 
@@ -67,17 +97,14 @@ $usuario_logueado = \Yii::$app->user->identity;
 
             <!-- Enlace de acceso -->
             <div id="acceso_modulo">
-                <?php //if ($usuario_logueado->getEstaMatriculado($model->id)): ?>
+
                     <p>
                         <?= Html::a(
                             'Acceder',
-                            ['modulos/view', 'id' => $model->id],
-                            [
-                                'class'=>'btn btn-primary enlace_personalizado',
-                            ]
+                            $href,
+                            $options
                         ) ?>
                     </p>
-                <?php //endif; ?>
             </div>
         </div>
     </div>

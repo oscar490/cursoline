@@ -12,6 +12,7 @@ use app\models\Matriculas;
  * @property int $id
  * @property string $nombre
  * @property int $nivel_id
+ * @property int $clave
  * @property string $url_imagen
  * @property string $descripcion
  *

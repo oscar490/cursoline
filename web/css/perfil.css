@@ -63,18 +63,7 @@ div#update_user {
     margin-left: 50px;
 }
 
-div.modal-content {
-    border-radius: 10px;
-}
 
-div.modal-content > div.modal-header {
-    background-color: #84caf3 !important;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
 
 div.modal-content > div.modal-body {
     padding-left: 30px;
