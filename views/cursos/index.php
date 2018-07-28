@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\ListView;
+use yii\bootstrap\Modal;
+use app\models\MatriculacionForm;
 
 /* @var $this yii\web\View */
 /* @var $cursos yii\data\ActiveDataProvider */
@@ -24,11 +26,12 @@ $css = <<<CSS
 CSS;
 
 $this->registerCss($css);
+
 ?>
 <div class="cursos-index">
-    
+
     <h2><strong id="titulo">Cursos</strong></h2>
-    
+
     <?=
         ListView::widget([
             'dataProvider' => $cursos,

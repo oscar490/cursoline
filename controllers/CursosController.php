@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
+use app\models\MatriculacionForm;
 
 /**
  * CursosController implements the CRUD actions for Cursos model.
@@ -58,7 +59,7 @@ class CursosController extends Controller
         }
 
         $cursos = Cursos::find()->all();
-        
+
         return $this->render('view', [
             'model' => $this->findModel($id),
             'cursos' => $cursos,

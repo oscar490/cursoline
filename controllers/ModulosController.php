@@ -10,6 +10,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use app\models\Matriculaciones;
+use app\models\MatriculacionForm;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 /**
  * ModelosController implements the CRUD actions for Modulos model.
@@ -36,11 +39,11 @@ class ModulosController extends Controller
                         'allow' => true,
                         'actions' => ['view'],
                         'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
-
-                            $usuario_logueado = Yii::$app->user->identity;
-                            return $usuario_logueado->getEstaMatriculado(Yii::$app->request->get('id'));
-                        }
+                        // 'matchCallback' => function ($rule, $action) {
+                        //
+                        //     $usuario_logueado = Yii::$app->user->identity;
+                        //     return $usuario_logueado->getEstaMatriculado(Yii::$app->request->get('id'));
+                        // }
                     ],
                 ],
             ]
@@ -73,6 +76,31 @@ class ModulosController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+    public function actionMatricular($id)
+    {
+        $model = new MatriculacionForm([
+            'id_modulo' => $id,
+        ]);
+
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $matriculacion = new Matriculaciones([
+                'usuario_id' => Yii::$app->user->id,
+                'modulo_id' => $id,
+            ]);
+
+            $matriculacion->save();
+
+            return $this->redirect(['modulos/view', 'id' => $id]);
+        }
+
+        return $this->render('matriculacion_form', ['model' => $model]);
     }
 
     /**

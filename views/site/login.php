@@ -14,9 +14,9 @@ $this->registerCssFile('/css/login.css');
 
 ?>
 <div class="site-login">
-    
 
-    
+
+
     <div class="row centrado">
         <div id="titulo" class="col-md-4">
             CursoLine

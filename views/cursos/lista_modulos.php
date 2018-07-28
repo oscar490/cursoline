@@ -9,7 +9,7 @@ use app\components\MyHelpers;
 
 
 <div class="row">
-    <?= 
+    <?=
         ListView::widget([
             'dataProvider' => new ActiveDataProvider([
                 'query' => $curso->getModulos()

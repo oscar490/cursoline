@@ -2,33 +2,26 @@
 
 namespace app\models;
 
-use Yii;
 use yii\base\Model;
+use app\models\Modulos;
 
-
-/**
- * Modelo que representa el formulario de matriculación
- * en módulo.
- */
 class MatriculacionForm extends Model
 {
-    /**
-     * Clave para matriculación.
-     * @var [type]
-     */
     public $clave;
+
+    public $id_modulo;
 
     public function rules()
     {
         return [
             [['clave'], 'required'],
-            [
-                ['clave'],
-                'exist',
-                'targetClass' => Modulos::class,
-                'targetAttribute' => ['clave' => 'clave'],
-                'message' => 'Clave incorrecta'
-            ],
+            [['clave'], function ($attribute, $params, $validator) {
+                $modulo = Modulos::findOne($this->id_modulo);
+
+                if ($modulo->clave !== $this->$attribute) {
+                    $this->addError($attribute, 'Clave incorrecta');
+                }
+            }]
         ];
     }
 

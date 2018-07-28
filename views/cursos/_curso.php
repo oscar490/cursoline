@@ -14,7 +14,7 @@ $this->registerJsFile(
 
 <!-- Curso -->
 <h3>
-    <?= $model->enlace ?> 
+    <?= $model->enlace ?>
 
     <?=
         Html::button(
@@ -34,4 +34,3 @@ $this->registerJsFile(
         'curso' => $model,
     ]) ?>
 </div>
-
