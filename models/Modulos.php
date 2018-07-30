@@ -76,4 +76,13 @@ class Modulos extends \yii\db\ActiveRecord
         return $this->hasMany(Matriculaciones::className(), ['modulo_id' => 'id'])
             ->inverseOf('modulo');
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUnidades()
+    {
+        return $this->hasMany(Unidades::className(), ['modulo_id' => 'id'])
+            ->inverseOf('modulo');
+    }
 }

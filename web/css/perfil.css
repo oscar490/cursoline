@@ -3,14 +3,6 @@ img[alt='imagen_perfil'] {
     height: 100px;
 }
 
-div.usuarios-view > div.row {
-    background-color: white;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
-    padding-top: 20px !important;
-    padding-bottom: 20px !important;
-    border-radius: 4px !important;
-}
 
 div.usuarios-view > div.row > div.col-md-1 {
     margin-right: 30px;

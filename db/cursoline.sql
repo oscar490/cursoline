@@ -92,3 +92,23 @@ CREATE TABLE matriculaciones
 
 INSERT INTO matriculaciones (modulo_id, usuario_id)
     VALUES (1, 1), (2, 1), (3, 1), (6, 2);
+
+
+
+
+-- Tabla unidades --
+
+DROP TABLE IF EXISTS unidades CASCADE;
+
+CREATE TABLE unidades
+(
+       id          BIGSERIAL    PRIMARY KEY
+    ,  nombre      VARCHAR(255) NOT NULL
+    ,  modulo_id   BIGINT       NOT NULL REFERENCES modulos (id) ON DELETE
+                                NO ACTION ON UPDATE CASCADE
+);
+
+INSERT INTO unidades (nombre, modulo_id)
+    VALUES ('Unidad 1: Introducción', 1),
+            ('Unidad 2: Clase y objeto', 1),
+            ('Unidad 3: Definir una clase', 1);

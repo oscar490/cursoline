@@ -30,7 +30,7 @@ Modal::end();
 <div class="usuarios-view">
 
     <!-- Cabecera -->
-    <div class="row sombra_div">
+    <div class="row contenedor_diseño sombra_div">
         <div class="col-xs-2 col-md-1">
             <!-- Imagen de perfil -->
             <?=
@@ -86,7 +86,7 @@ Modal::end();
     <br>
 
     <!-- Cuerpo -->
-    <div id="cuerpo_general" class="row sombra_div">
+    <div id="cuerpo_general" class="row contenedor_diseño sombra_div">
 
         <!-- Detalles de usuario -->
         <div class="col-md-6">
