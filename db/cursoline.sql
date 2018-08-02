@@ -82,9 +82,9 @@ DROP TABLE IF EXISTS matriculaciones CASCADE;
 CREATE TABLE matriculaciones
 (
        id         BIGSERIAL PRIMARY KEY
-    ,  modulo_id  BIGINT    REFERENCES modulos (id) ON DELETE
+    ,  modulo_id  BIGINT    NOT NULL REFERENCES modulos (id) ON DELETE
                             NO ACTION ON UPDATE CASCADE
-    ,  usuario_id BIGINT    REFERENCES usuarios (id) ON DELETE
+    ,  usuario_id BIGINT    NOT NULL REFERENCES usuarios (id) ON DELETE
                             NO ACTION ON UPDATE CASCADE
 
     ,  UNIQUE (modulo_id, usuario_id)

@@ -5,7 +5,7 @@
 
 #titulo {
     color: white;
-    text-shadow: 1px 2px 4px black;
+    /* text-shadow: 1px 2px 4px black; */
     font-weight: 1000;
     font-size: 40px;
     display: flex;
@@ -39,4 +39,8 @@ div.site-login .form-control {
 div.checkbox > label {
     color: #84caf3 !important;
     font-weight: bold;
+}
+
+ul.breadcrumb {
+    margin-bottom: 40px;
 }

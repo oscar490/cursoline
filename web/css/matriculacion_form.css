@@ -1,0 +1,13 @@
+div#form_matriculacion {
+    background-color: white;
+    padding: 20px 20px 20px 20px;
+    border-color: #84caf3 !important;
+    border-width: 20px;
+    border-radius: 4px;
+}
+
+
+div.row {
+    display: flex;
+    justify-content: center;
+}

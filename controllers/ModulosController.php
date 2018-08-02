@@ -86,29 +86,42 @@ class ModulosController extends Controller
         ]);
     }
 
+    public function actionRenderContent($id)
+    {
+        $model = $this->findModel($id);
+
+        $unidades = new ActiveDataProvider([
+            'query' => $model->getUnidades(),
+            'pagination' => false,
+        ]);
+
+        return $this->renderAjax('view', [
+            'model' => $model,
+            'unidades' => $unidades,
+        ]);
+    }
+
     public function actionMatricular($id)
     {
         $model = new MatriculacionForm([
             'id_modulo' => $id,
         ]);
 
-        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            return ActiveForm::validate($model);
-        }
+        Yii::$app->response->format = Response::FORMAT_JSON;
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
             $matriculacion = new Matriculaciones([
                 'usuario_id' => Yii::$app->user->id,
                 'modulo_id' => $id,
             ]);
-
             $matriculacion->save();
-
-            return $this->redirect(['modulos/view', 'id' => $id]);
+            // return $this->redirect(['modulos/view', 'id' => $id]);
         }
 
-        return $this->render('matriculacion_form', ['model' => $model]);
+        return $model->errors;
+
+
     }
 
     /**
