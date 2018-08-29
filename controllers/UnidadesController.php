@@ -3,18 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Cursos;
-use app\models\CursosSearch;
+use app\models\Unidades;
+use app\models\UnidadesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\data\ActiveDataProvider;
-use app\models\MatriculacionForm;
 
 /**
- * CursosController implements the CRUD actions for Cursos model.
+ * UnidadesController implements the CRUD actions for Unidades model.
  */
-class CursosController extends Controller
+class UnidadesController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -32,48 +30,41 @@ class CursosController extends Controller
     }
 
     /**
-     * Lists all Cursos models.
+     * Lists all Unidades models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $cursos = new ActiveDataProvider([
-            'query' => Cursos::find(),
-        ]);
+        $searchModel = new UnidadesSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'cursos' => $cursos,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Cursos model.
+     * Displays a single Unidades model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        if (!ctype_digit($id)) {
-            throw new NotFoundHttpException('Parámetro incorrecto');
-        }
-
-        $cursos = Cursos::find()->all();
-
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'cursos' => $cursos,
         ]);
     }
 
     /**
-     * Creates a new Cursos model.
+     * Creates a new Unidades model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Cursos();
+        $model = new Unidades();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -85,7 +76,7 @@ class CursosController extends Controller
     }
 
     /**
-     * Updates an existing Cursos model.
+     * Updates an existing Unidades model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -105,7 +96,7 @@ class CursosController extends Controller
     }
 
     /**
-     * Deletes an existing Cursos model.
+     * Deletes an existing Unidades model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -119,15 +110,15 @@ class CursosController extends Controller
     }
 
     /**
-     * Finds the Cursos model based on its primary key value.
+     * Finds the Unidades model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Cursos the loaded model
+     * @return Unidades the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Cursos::findOne($id)) !== null) {
+        if (($model = Unidades::findOne($id)) !== null) {
             return $model;
         }
 

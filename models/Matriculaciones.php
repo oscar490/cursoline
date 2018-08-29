@@ -31,6 +31,7 @@ class Matriculaciones extends \yii\db\ActiveRecord
     {
         return [
             [['modulo_id', 'usuario_id'], 'default', 'value' => null],
+            [['modulo_id', 'usuario_id'], 'required'], 
             [['modulo_id', 'usuario_id'], 'integer'],
             [['modulo_id', 'usuario_id'], 'unique', 'targetAttribute' => ['modulo_id', 'usuario_id']],
             [['modulo_id'], 'exist', 'skipOnError' => true, 'targetClass' => Modulos::className(), 'targetAttribute' => ['modulo_id' => 'id']],
@@ -48,6 +49,11 @@ class Matriculaciones extends \yii\db\ActiveRecord
             'modulo_id' => 'Modulo ID',
             'usuario_id' => 'Usuario ID',
         ];
+    }
+
+    public function formName()
+    {
+        return '';
     }
 
     /**

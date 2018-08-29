@@ -37,7 +37,7 @@ class LoginForm extends Model
                 'targetClass' => Usuarios::class,
                 'targetAttribute' =>  ['email' => 'email'],
                 'message' => 'No existe ningún usuario con esa dirección de correo',
-                
+
             ],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
@@ -57,7 +57,7 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-            
+
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, 'Contraseña incorrecta.');
             }

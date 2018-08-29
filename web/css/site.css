@@ -120,7 +120,7 @@ a.navbar-brand {
     font-weight: 1000;
     color: white !important;
     font-size: 25px;
-    
+
 }
 
 a.navbar-brand:hover {
@@ -182,6 +182,26 @@ button.logout:hover {
     opacity: 0.8;
 }
 
+#titulo {
+    color: white;
+    background-color: #84caf3 !important;
+    border-radius: 7px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-weight: 1000;
+}
+
+.contenedor_diseño {
+    background-color: white;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    border-radius: 4px !important;
+}
+
 a {
     text-decoration: none !important;
 }
@@ -211,7 +231,7 @@ ul.dropdown-menu {
 }
 
 .navbar-inverse .navbar-toggle:focus {
-    background-color: #84caf3 !important; 
+    background-color: #84caf3 !important;
 }
 
 .sombra_div {
@@ -237,4 +257,17 @@ a.dropdown-toggle > img {
 a.dropdown-toggle {
     padding-top: 3px !important;
     padding-bottom: 2px !important;
+}
+
+div.modal-content {
+    border-radius: 10px;
+}
+
+div.modal-content > div.modal-header {
+    background-color: #84caf3 !important;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

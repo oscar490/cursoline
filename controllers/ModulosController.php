@@ -8,7 +8,12 @@ use app\models\ModulosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\filters\AccessControl;
+use app\models\Matriculaciones;
+use app\models\MatriculacionForm;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
+use yii\data\ActiveDataProvider;
 /**
  * ModelosController implements the CRUD actions for Modulos model.
  */
@@ -26,6 +31,22 @@ class ModulosController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['view'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['view'],
+                        'roles' => ['@'],
+                        // 'matchCallback' => function ($rule, $action) {
+                        //
+                        //     $usuario_logueado = Yii::$app->user->identity;
+                        //     return $usuario_logueado->getEstaMatriculado(Yii::$app->request->get('id'));
+                        // }
+                    ],
+                ],
+            ]
         ];
     }
 
@@ -52,9 +73,55 @@ class ModulosController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+        $model =  $this->findModel($id);
+
+        $unidades = new ActiveDataProvider([
+            'query' => $model->getUnidades(),
+            'pagination' => false,
         ]);
+
+        return $this->render('view', [
+            'model' => $model,
+            'unidades' => $unidades,
+        ]);
+    }
+
+    public function actionRenderContent($id)
+    {
+        $model = $this->findModel($id);
+
+        $unidades = new ActiveDataProvider([
+            'query' => $model->getUnidades(),
+            'pagination' => false,
+        ]);
+
+        return $this->renderAjax('view', [
+            'model' => $model,
+            'unidades' => $unidades,
+        ]);
+    }
+
+    public function actionMatricular($id)
+    {
+        $model = new MatriculacionForm([
+            'id_modulo' => $id,
+        ]);
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
+            $matriculacion = new Matriculaciones([
+                'usuario_id' => Yii::$app->user->id,
+                'modulo_id' => $id,
+            ]);
+            $matriculacion->save();
+            // return $this->redirect(['modulos/view', 'id' => $id]);
+        }
+
+        return $model->errors;
+
+
     }
 
     /**

@@ -8,6 +8,9 @@ use app\models\MatriculacionesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\widgets\ActiveForm;
+use yii\web\Response;
+use app\models\MatriculacionForm;
 
 /**
  * MatriculacionesController implements the CRUD actions for Matriculaciones model.
@@ -64,15 +67,8 @@ class MatriculacionesController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Matriculaciones();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
     }
 
     /**

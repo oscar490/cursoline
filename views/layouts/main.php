@@ -30,8 +30,8 @@ if (Yii::$app->user->isGuest) {
 
     $items_nav = [
         [
-            'label' =>'<div>' . MyHelpers::icon('glyphicon glyphicon-home') . 
-                ' ' . 'Inicio</div>', 
+            'label' =>'<div>' . MyHelpers::icon('glyphicon glyphicon-home') .
+                ' ' . 'Inicio</div>',
             'url'=>['/cursos/index'],
             'encode' => false,
         ],
@@ -57,7 +57,7 @@ if (Yii::$app->user->isGuest) {
             ],
             'encode' => false,
         ],
-       
+
     ];
 }
 ?>
@@ -78,7 +78,7 @@ if (Yii::$app->user->isGuest) {
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 
+        'brandLabel' =>
             Html::tag(
                 'p',
                 Html::img(

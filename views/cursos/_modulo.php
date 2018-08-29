@@ -2,6 +2,8 @@
 /* Vista de un módulo del curso */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
+
 
 $this->registerCssFile('/css/modulo.css');
 
@@ -22,6 +24,9 @@ CSS;
 
 $this->registerCss($css);
 
+$enlace_matriculacion = Url::to(['modulos/matricular', 'id' => $model->id]);
+
+//  JavaSript.
 $js = <<<JS
     $("div.thumbnail").hover(
         function() {
@@ -33,10 +38,11 @@ $js = <<<JS
             $(this).find("div#acceso_modulo").slideUp();
 
         }
-    )
+    );
 JS;
 
 $this->registerJs($js);
+
 
 ?>
 
@@ -66,15 +72,14 @@ $this->registerJs($js);
 
             <!-- Enlace de acceso -->
             <div id="acceso_modulo">
-                <p>
-                    <?= Html::a(
-                        'Acceder',
-                        ['modulos/view', 'id' => $model->id],
-                        [
-                            'class'=>'btn btn-primary enlace_personalizado',
-                        ]
-                    ) ?>
-                </p>
+
+                    <p>
+                        <?= Html::a(
+                            'Acceder',
+                            ['modulos/view', 'id' => $model->id],
+                            ['class'=>'btn btn-primary enlace_personalizado']
+                        ) ?>
+                    </p>
             </div>
         </div>
     </div>
